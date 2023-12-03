@@ -13,7 +13,7 @@ const MainTop = ({ onSetPage }: IMainTop) => {
     return (
         <Wrap className="container">
             <div className="mt-wallets">
-                <span className="size-0 color-black">QuyenKac</span>
+                <span className="size-0-2 color-black">KecKac</span>
                 <img src={iconExchange} alt="" />
             </div>
             <MainChains />
@@ -47,6 +47,12 @@ const Wrap = styled.div`
         margin-right: auto;
         > img {
             width: 20px;
+        }
+        > span {
+            width: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
     .mt-add {

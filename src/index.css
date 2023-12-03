@@ -125,4 +125,8 @@ input:hover {
   border: 2px solid rgb(33, 112, 208) !important;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 
