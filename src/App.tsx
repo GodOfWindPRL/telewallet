@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Settings from 'pages/setting/Settings';
 import { useState } from 'react';
 import Import from 'pages/import/Import';
+import Send from 'pages/send/Send';
 
 function App() {
   const [page, setPage] = useState<string>("")
@@ -26,6 +27,9 @@ function App() {
       </div>
       <div className={`app-page ${page === "import" && "app-page-active"}`}>
         <Import onSetPage={onSetPage} />
+      </div>
+      <div className={`app-page ${page === "send" && "app-page-active"}`}>
+        <Send onSetPage={onSetPage} />
       </div>
     </Wrap>
   );

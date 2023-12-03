@@ -20,7 +20,7 @@ const Main = ({ onSetPage }: IMain) => {
         <Wrap className="App">
             <MainTop onSetPage={onSetPage}/>
             <MainBalance />
-            <MainAction />
+            <MainAction onSetPage={onSetPage}/>
             {tab === 0 ? <MainTokens />
                 : tab === 1 ? <MainTokens />
                     : <MainTokens />}
