@@ -12,7 +12,7 @@ const MainTop = ({ onSetPage }: IMainTop) => {
 
     return (
         <Wrap className="container">
-            <div className="mt-wallets">
+            <div className="mt-wallets" onClick={() => { onSetPage("account") }}>
                 <span className="size-0-2 color-black">KecKac</span>
                 <img src={iconExchange} alt="" />
             </div>

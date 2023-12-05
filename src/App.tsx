@@ -6,6 +6,7 @@ import Settings from 'pages/setting/Settings';
 import { useState } from 'react';
 import Import from 'pages/import/Import';
 import Send from 'pages/send/Send';
+import AccountList from 'pages/account/AccountList';
 
 function App() {
   const [page, setPage] = useState<string>("")
@@ -30,6 +31,9 @@ function App() {
       </div>
       <div className={`app-page ${page === "send" && "app-page-active"}`}>
         <Send onSetPage={onSetPage} />
+      </div>
+      <div className={`app-page ${page === "account" && "app-page-active"}`}>
+        <AccountList onSetPage={onSetPage} />
       </div>
     </Wrap>
   );
