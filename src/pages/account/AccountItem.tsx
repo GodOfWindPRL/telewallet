@@ -127,7 +127,7 @@ const Wrap = styled.div`
             }
             .sg-item-2 {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: flex-start !important;
                 gap: 4px;
             }
         }
