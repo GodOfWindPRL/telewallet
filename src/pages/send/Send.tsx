@@ -7,7 +7,7 @@ import { subStringAddress } from 'helpers/subAddress';
 import numeral from 'numeral';
 import iconBTC from 'assets/images/icon-btc.png'
 import iconETH from 'assets/images/icon-eth.png'
-import { FaCaretDown } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 import Button from 'components/core/Button';
 import PickToken from 'pages/import/PickToken';
 
@@ -32,21 +32,27 @@ const Send = ({ onSetPage }: ISettings) => {
     ]
 
     const [token, setToken] = useState(0);
+    const [stageConfirm, setStageConfirm] = useState(false)
+
     const onSetToken = (e: number) => {
         setToken(e)
     }
 
-
+    const onSend = async () => {
+        // check 
+        setStageConfirm(true)
+    }
 
     return (
         <Wrap>
             <div className="container setting-back" onClick={() => {
+                setStageConfirm(false);
                 onSetPage("")
             }}>
                 <FaArrowLeft />
                 <span className="size-2-2">{t("send")}</span>
             </div>
-            <div className="container setting-wrap">
+            {!stageConfirm ? <div className="container setting-wrap">
                 <div className="setting-group">
                     <div className="sg-item">
                         <span className="size-0-2">{t("from")}</span>
@@ -54,7 +60,7 @@ const Send = ({ onSetPage }: ISettings) => {
                             <FaRegAddressBook />
                             <div className="sgia-text">
                                 <span className="size-0-2">QuyenKec</span>
-                                <span className="size-0">{subStringAddress({ text: "0x4tgxcbTGH$%RHBFGcg45gdffdsf" })}</span>
+                                <span className="size-0">{subStringAddress({ text: "0x4tgxcbTGH$%RHBFGcg45gdffdsf", length: 7 })}</span>
                             </div>
                             <span className="size-0-2">{numeral(0.34234).format("0,0.[00]")}$</span>
                         </div>
@@ -87,17 +93,43 @@ const Send = ({ onSetPage }: ISettings) => {
                         </div>
                     </div>
                 </div>
-                <Button variant='fill' text='send' />
+                <Button variant='fill' text='send' onClick={onSend} />
             </div>
-            {/* <div className={`app-page ${tab === "importSeed" && "app-page-active"}`}>
-                <ImportSeed onSetTab={onSetTab} />
-            </div>
-            <div className={`app-page ${tab === "addAccount" && "app-page-active"}`}>
-                <AddAccount onSetTab={onSetTab} />
-            </div>
-            <div className={`app-page ${tab === "importAccount" && "app-page-active"}`}>
-                <ImportAccount onSetTab={onSetTab} />
-            </div> */}
+                : <div className="container setting-wrap">
+                    <div className="setting-group">
+                        <div className="sg-transfer">
+                            <div className="sgt-item">
+                                <span className="size-0-2">{t("from")}</span>
+                                <span className="size-0">{"0x4tgxcbTGH$%RHBFGcg45gdffdsf"}</span>
+                                <span className="size-0-2 color-blue">QuyenKec</span>
+
+                            </div>
+                            <FaArrowCircleRight />
+                            <div className="sgt-item">
+                                <span className="size-0-2">{t("to")}</span>
+                                <span className="size-0">{"0x4tgxcbTGH$%RHBFGcg45gdffdsf"}</span>
+                                <span className="size-0-2 color-blue"></span>
+                            </div>
+                        </div>
+                        <div className="sg-send">
+                            <span className="size-1-2">{t("send")} <img src={dataToken[token].icon} alt="" /></span>
+                            <span className="size-1">{numeral(464356.435345).format("0,0.[00000]")} {dataToken[token].name}</span>
+                        </div>
+                    </div>
+                    <div className="setting-group">
+                        <div className="sg-row">
+                            <span className="size-0-2 color-blue">{t("gas")} <span className="size-0 color-gray">({t("estimated")})</span></span>
+                            <div className="sgr-value">
+                                <span className="size-0">${0.2343}   <span className="size-0-2">{0.004567} ETH</span></span>
+                                <span className="size-0-2 color-gray">{t("maxFee")} <span className="size-0">{0.0056} ETH</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="st-bt">
+                        <Button variant='border' text='reject' />
+                        <Button variant='fill' text='confirm' />
+                    </div>
+                </div>}
         </Wrap>
     );
 }
@@ -132,6 +164,7 @@ const Wrap = styled.div`
         display: flex;
         flex-direction: column;
         gap: 20px;
+        flex: 1;
         .setting-group {
             background-color: #FFF;
             border-radius: 8px;
@@ -196,6 +229,70 @@ const Wrap = styled.div`
                     height: 32px;
                 }
             }
+            .sg-transfer {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                > svg {
+                    scale: 1.5;
+                }
+                .sgt-item {
+                    border-radius: 6px;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 6px 10px 10px 10px;
+                    background-color: #F5F6FA;
+                    flex: 1;
+                    align-self: stretch;
+                    gap: 10px;
+                    > span {
+                        word-wrap: break-word;
+                        word-break: break-all;
+                    }
+                    > span:last-child {
+                        margin-top: auto;
+                    }
+                }
+            }
+            .sg-send {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                margin: 10px 0;
+                > span {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+            }
+            .sg-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 10px 0 4px 0;
+                .sgr-value {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    > span {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                }
+            }
+        }
+        .st-bt {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
+        > button {
+            margin-top: auto;
+            margin-bottom: 10px;
         }
     }
 `
