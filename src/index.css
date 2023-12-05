@@ -109,6 +109,10 @@ html {
   color: rgb(33, 112, 208);
 }
 
+.color-red {
+  color: red;
+}
+
 
 input {
   background: "#FFF";
