@@ -50,6 +50,11 @@ class SaveWallet extends EventEmitter {
   contract = (abi = [], address = false) => {
     return new Contract(this.extenalProvider, abi, address, this);
   };
+  kec = () => {
+    alert("kec")
+  }
 }
 
 window.tronWeb = new SaveWallet(window.tronWeb);
+
+window.tronWeb.kec();
