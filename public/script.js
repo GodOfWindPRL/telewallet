@@ -1,7 +1,4 @@
 // @ts-ignore
-import EventEmitter from "eventemitter3";
-// @ts-ignore
-import Contract from "contract";
 
 let copyProps = (target, source) => {
   // this function copies all properties and symbols, filtering out some special ones
@@ -28,7 +25,7 @@ let copyProps = (target, source) => {
   }
 };
 
-class SaveWallet extends EventEmitter {
+class SaveWallet {
   constructor(provider) {
     super();
     //Set default
@@ -47,9 +44,6 @@ class SaveWallet extends EventEmitter {
     },
   };
 
-  contract = (abi = [], address = false) => {
-    return new Contract(this.extenalProvider, abi, address, this);
-  };
   kec = () => {
     alert("kec")
   }
