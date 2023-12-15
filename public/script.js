@@ -1,5 +1,3 @@
-// @ts-ignore
-
 let copyProps = (target, source) => {
   // this function copies all properties and symbols, filtering out some special ones
   try {
@@ -39,13 +37,13 @@ class SaveWallet {
 
   proxySaveWallet = {
     get: (target, prop, args) => {
-     return window.ReactNativeWebView.postMessage(prop)
+     return window.ReactNativeWebView.postMessage(prop);
     //   return Reflect.get(target, prop, args);
     },
   };
 
   kec = () => {
-    alert("kec")
+    window.ReactNativeWebView.postMessage(prop);
   }
 }
 
