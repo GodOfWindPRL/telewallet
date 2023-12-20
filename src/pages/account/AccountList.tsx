@@ -56,7 +56,7 @@ const AccountList = ({ onSetPage }: ISettings) => {
             </div>
             <div className="wrap-page">
                 <div className="container setting-wrap">
-                    {listAccount.map((item, index) => <div className="setting-group">
+                    {listAccount.map((item, index) => <div className="setting-group" key={index}>
                         <div className="sg-item" onClick={() => { onSetAccount(index) }}>
                             <IconWallet idItem={index} />
                             <div className="sgi-text">

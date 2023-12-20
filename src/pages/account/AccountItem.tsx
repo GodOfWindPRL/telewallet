@@ -14,7 +14,7 @@ interface ISettings {
 
 const AccountItem = ({ onSetAccount, data }: ISettings) => {
     const { t } = useTranslation();
-    console.log(data)
+    // console.log(data)
 
     return (
         <Wrap>

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Import from 'pages/import/Import';
 import Send from 'pages/send/Send';
 import AccountList from 'pages/account/AccountList';
+import "./test3"
 
 function App() {
   const [page, setPage] = useState<string>("")
